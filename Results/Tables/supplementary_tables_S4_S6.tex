@@ -1,0 +1,60 @@
+\begin{table}[htbp]
+\centering
+\caption{ARI obtained in the original feature space and in the two-dimensional PCA space for the datasets with more than two attributes. KM and k-means++ are averaged over 30 runs (seeds 0 to 29). In the original space HPKM uses the $d$-dimensional form of its rule. Cum.\ EV is the cumulative explained variance of the first two principal components.}
+\label{tab:S4}
+\small
+\begin{tabular}{|l|l|c|cccc|c|}
+\hline
+Dataset & Space & Dim. & KM & k-means++ & Var-Part & HPKM & Cum.\ EV (\%) \\
+\hline
+Hepta & Original & 3 & 0.78 & 0.99 & 1.00 & 1.00 &  \\
+ & PCA-2D & 2 & 0.84 & 0.93 & 0.96 & 0.96 & 68.45 \\
+\hline
+Iris & Original & 4 & 0.67 & 0.72 & 0.73 & 0.73 &  \\
+ & PCA-2D & 2 & 0.67 & 0.72 & 0.72 & 0.72 & 97.76 \\
+\hline
+Breast & Original & 9 & 0.85 & 0.85 & 0.85 & 0.85 &  \\
+ & PCA-2D & 2 & 0.85 & 0.85 & 0.85 & 0.85 & 76.25 \\
+\hline
+Yeast & Original & 8 & 0.14 & 0.14 & 0.11 & 0.14 &  \\
+ & PCA-2D & 2 & 0.07 & 0.08 & 0.07 & 0.07 & 56.58 \\
+\hline
+Wine & Original & 13 & 0.37 & 0.36 & 0.35 & 0.37 &  \\
+ & PCA-2D & 2 & 0.37 & 0.36 & 0.35 & 0.37 & 99.98 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Two-sided Wilcoxon signed-rank test ($p$-values) of HPKM against each baseline over the 11 datasets (zero differences split between the ranks). The values of Tables~\ref{tab:S1} and~\ref{tab:S2} are used, with the mean over 30 runs for KM and k-means++. A dash means that the two methods gave identical values on every dataset.}
+\label{tab:S5}
+\small
+\begin{tabular}{|l|ccccccccc|}
+\hline
+HPKM vs. & SH & DBI & ARI & HM & CM & VM & ED & Time & Iteration \\
+\hline
+KM & 0.002 & 0.004 & 0.016 & 0.047 & 0.061 & 0.021 & 0.021 & <0.001 & 0.007 \\
+K-Means++ & 0.061 & 0.387 & 0.387 & 0.547 & 0.797 & 0.488 & 0.219 & <0.001 & 0.465 \\
+ECKM & 0.008 & 0.340 & 0.047 & 0.008 & 0.109 & 0.027 & 0.012 & <0.001 & 0.027 \\
+Var-Part & 0.047 & 0.141 & 0.500 & 0.562 & 1.000 & 0.500 & 0.906 & 0.007 & 0.844 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Initialisation time (ms, median of three runs) on two-dimensional synthetic data with 15 Gaussian clusters and an increasing number of points $n$. ECKM was not run for $n=10^6$ because of the cost of the Voronoi and empty-circle computations.}
+\label{tab:S6}
+\small
+\begin{tabular}{|r|ccccc|}
+\hline
+$n$ & KM & k-means++ & Var-Part & HPKM & ECKM \\
+\hline
+1,000 & 0.19 & 1.86 & 1.03 & 0.46 & 16.32 \\
+10,000 & 0.26 & 4.10 & 5.31 & 1.90 & 173.00 \\
+100,000 & 1.39 & 30.88 & 50.28 & 20.39 & 2351.92 \\
+1,000,000 & 13.34 & 505.02 & 505.78 & 201.56 & -- \\
+\hline
+\end{tabular}
+\end{table}
